@@ -1,2 +1,2 @@
 # truenews
-No fakery here, only truth.
+News feed app that allows user to add customized news sources
