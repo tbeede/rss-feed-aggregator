@@ -3,12 +3,22 @@
 <head>
     <title>True News</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
-</head>
+    <link href="../static/css/main.css"
+          th:href="@{/css/main.css}"
+          rel="stylesheet" media="screen" /></head>
 <body>
 <h1>True News</h1>
-<form action="#" th:action="@{/}" th:object="${rssParser}" method="post">
-    <span th:text="*{readRSSFeed('http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml')}"></span>
-</form>
+<div class="container" action="#" th:action="@{/}" th:object="${rssParser}" method="post">
+    <div id="column1" style="float:left; margin:0; width:33%;">
+        <h2> On the Left </h2>
+        <span th:text="*{readRSSFeed('http://rss.nytimes.com/services/xml/rss/nyt/Politics.xml')}"></span>
+        <span th:text="*{readRSSFeed('http://rss.cnn.com/rss/cnn_allpolitics.rss')}"></span>
+    </div>
+    <div id="column2" style="float:left; margin:0; width:33%;">
+        <h2> On the Right </h2>
+        <span th:text="*{readRSSFeed('http://feeds.foxnews.com/foxnews/politics')}"></span>
+        <span th:text="*{readRSSFeed('http://feeds.feedburner.com/zerohedge/feed')}"></span>
+    </div>
+</div>
 </body>
 </html>
