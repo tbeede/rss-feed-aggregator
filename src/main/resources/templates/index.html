@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>True News</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
 </head>
 <body>
-<p>Carpe Newss</p>
+<h1>True News</h1>
+<form action="#" th:action="@{/}" th:object="${rssParser}" method="post">
+    <span th:text="*{readRSSFeed('http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml')}"></span>
+</form>
 </body>
 </html>
