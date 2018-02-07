@@ -5,19 +5,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="../static/css/main.css"
           th:href="@{/css/main.css}"
-          rel="stylesheet" media="screen" /></head>
+          rel="stylesheet" media="screen" />
+</head>
 <body>
 <h1>True News</h1>
-<div class="container" action="#" th:action="@{/}" th:object="${rssParser}" method="post">
-    <div id="column1" style="float:left; margin:0; width:33%;">
+<div class="container1" th:action="@{/}" th:object="${leftParser}">
+    <div id="column1" style="float:left; margin:0; width:50%;">
         <h2> On the Left </h2>
-        <span th:text="*{readRSSFeed('http://rss.nytimes.com/services/xml/rss/nyt/Politics.xml')}"></span>
-        <span th:text="*{readRSSFeed('http://rss.cnn.com/rss/cnn_allpolitics.rss')}"></span>
+        <img th:attr="src=@{${leftParser}}"/>
+        <span th:text="${leftParser}"></span>
     </div>
-    <div id="column2" style="float:left; margin:0; width:33%;">
+</div>
+<div class="container2" th:action="@{/}" th:object="${rightParser}">
+    <div id="column2" style="float:right; margin:0; width:50%;">
         <h2> On the Right </h2>
-        <span th:text="*{readRSSFeed('http://feeds.foxnews.com/foxnews/politics')}"></span>
-        <span th:text="*{readRSSFeed('http://feeds.feedburner.com/zerohedge/feed')}"></span>
+        <img th:attr="src=@{${rightParser}}"/>
+        <span th:text="${rightParser}"></span>
     </div>
 </div>
 </body>

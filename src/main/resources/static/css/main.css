@@ -3,21 +3,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h1	{
-    font-family: Arial, sans-serif;
-}
-
 div {
     box-shadow: 0 0 1px black inset;
 }
 
 #contentBox {
     margin: 0 auto;
-    width: 70%;
+    width: 50%;
 }
 
 #contentBox .column {
     float: left;
     margin: 0;
-    width: 33%;
+    width: 50%;
 }
