@@ -3,7 +3,6 @@ package com.truenews;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.util.ArrayList;
 
 @Controller
@@ -14,7 +13,8 @@ public class RSSController {
         Right right = new Right();
         ArrayList getLeft = left.getLeftList();
         ArrayList getRight = right.getRightList();
-        model.addAttribute("leftParser", getLeft);
+        // RSSParser is WIP
+        model.addAttribute("leftParser", RSSParser.readRSSFeed());
         model.addAttribute("rightParser", getRight);
         return "index";
     }

@@ -9,14 +9,14 @@
 </head>
 <body>
 <h1>True News</h1>
-<div class="container1" th:action="@{/}" th:object="${leftParser}">
+<div class="container1" th:action="@{/}">
     <div id="column1" style="float:left; margin:0; width:50%;">
         <h2> On the Left </h2>
         <img th:attr="src=@{${leftParser}}"/>
         <span th:text="${leftParser}"></span>
     </div>
 </div>
-<div class="container2" th:action="@{/}" th:object="${rightParser}">
+<div class="container2" th:action="@{/}">
     <div id="column2" style="float:right; margin:0; width:50%;">
         <h2> On the Right </h2>
         <img th:attr="src=@{${rightParser}}"/>

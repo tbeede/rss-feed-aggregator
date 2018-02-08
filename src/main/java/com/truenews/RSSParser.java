@@ -1,43 +1,60 @@
 package com.truenews;
 
-import java.io.BufferedReader;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.*;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 
 public class RSSParser {
+    // For testing
+    public static void main(String[] args) {
+        readRSSFeed();
+    }
     public static String readRSSFeed() {
+        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        Document doc = null;
+        Left left = new Left();
+        try {
+            builder = domFactory.newDocumentBuilder();
+//            doc = builder.parse("http://rss.nytimes.com/services/xml/rss/nyt/Politics.xml");
+            doc = builder.parse(left.getCnn());
+        }
+        catch (SAXException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
 
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        getNodeNameAndValue(doc, xpath);
 
         return null;
     }
 
-//    public static String readFeed(String url) {
-//        try {
-//            URL rssUrl = new URL(url);
-//            BufferedReader in = new BufferedReader(new InputStreamReader(rssUrl.openStream()));
-//            String sourceCode = "";
-//            String line;
-//            while ((line = in.readLine()) != null) {
-//                int titleEndIndex = 0;
-//                int titleStartIndex = 0;
-//                while (titleStartIndex >= 0) {
-//                    titleStartIndex = line.indexOf("<url>", titleEndIndex);
-//                    if (titleStartIndex >= 0) {
-//                        titleEndIndex = line.indexOf("</url>", titleStartIndex);
-//                        sourceCode += line.substring(titleStartIndex + "<url>".length(), titleEndIndex) + "\n";
-//                    }
-//                }
-//            }
-//            in.close();
-//            return sourceCode;
-//        } catch (MalformedURLException ue) {
-//            System.out.println("Malformed URL");
-//        } catch (IOException ioe) {
-//            System.out.println("Something went wrong reading the contents");
-//        }
-//        return null;
-//    }
+    private static void getNodeNameAndValue(Document doc, XPath xpath){
+        XPathExpression expr;
+        Object result = null;
+        try {
+            expr = xpath.compile("//channel/*/url/text()");
+            result = expr.evaluate(doc, XPathConstants.NODESET);
+        }
+        catch (XPathExpressionException e) {
+            e.printStackTrace();
+        }
+        NodeList nodes = (NodeList) result;
+
+        for (int i = 0; i < nodes.getLength(); i++) {
+            System.out.println(nodes.item(i).getParentNode().getNodeName() + " " + nodes.item(i).getNodeValue());
+        }
+    }
 }
