@@ -1,12 +1,14 @@
-//package com.truenews;
-//
-//import org.junit.Test;
-//
-//public class RSSParserTest {
-//    @Test
-//    public void testRSSUrl() {
-//        RSSParser rssParser = new RSSParser();
-//        String testUrl = "http://rss.cnn.com/rss/edition.rss";
-//        System.out.println(rssParser.readRSSFeed(testUrl));
-//    }
-//}
+package com.truenews;
+
+import com.rometools.rome.io.FeedException;
+import org.junit.Test;
+
+import java.io.IOException;
+
+public class RSSParserTest {
+    @Test
+    public void testRSSUrl() throws IOException, FeedException {
+        String testUrl = new Left().getCnn();
+        System.out.println(new RSSParser().readRssFeed(testUrl));
+    }
+}
