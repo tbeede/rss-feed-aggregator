@@ -1,26 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>True News</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link href="../static/css/main.css"
           th:href="@{/css/main.css}"
           rel="stylesheet" media="screen" />
 </head>
 <body>
-<h1>True News</h1>
-<div class="container1" th:action="@{/}">
-    <div id="column1" style="float:left; margin:0; width:50%;">
-        <h2> On the Left </h2>
-        <img th:attr="src=@{${leftParser}}"/>
-        <span th:text="${leftParser}"></span>
+<div class="contentBox">
+    <div th:action="@{/}" style="float:left; margin:0; width:50%;">
+        <!--CNN-->
+        <div><img th:src="@{http://i2.cdn.turner.com/cnn/2015/images/09/24/cnn.digital.png}"/></div>
+        <p th:utext="${leftParserCNNFeed}"></p>
+        <!--NYT-->
+        <p><img th:src="@{https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png}"/></p>
+        <p><span th:utext="${leftParserNYTFeed}"></span></p>
+        <!--WAPO-->
+        <p><img th:src="@{http://www.thedailysheeple.com/wp-content/uploads/2017/02/C5XSkkmWMAQkDEv.jpg}"/></p>
+        <p><span th:utext="${leftParserWAPOFeed}"></span></p>
     </div>
-</div>
-<div class="container2" th:action="@{/}">
-    <div id="column2" style="float:right; margin:0; width:50%;">
-        <h2> On the Right </h2>
-        <img th:attr="src=@{${rightParser}}"/>
-        <span th:text="${rightParser}"></span>
+    <div th:action="@{/}" style="float:right; margin:0; width:50%;">
+        <p><img th:src="@{http://tools.foxnews.com/sites/tools.foxnews.com/files/images/fox-news-logo.png}"/></p>
+        <p><span th:utext="${rightParserFOXFeed}"></span></p>
+        <!--BLAZE-->
+        <p><img th:src="@{https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/TheBlaze_new_logo.svg/250px-TheBlaze_new_logo.svg.png}"/></p>
+        <p><span th:utext="${rightParserBLAZEFeed}"></span></p>
+        <!--NATIONAL REVIEW-->
+        <p><img th:src="@{//c8.nrostatic.com/sites/all/themes/nro_javelin/assets/img/logo-print.jpg}"/></p>
+        <p><span th:utext="${rightParserNRFeed}"></span></p>
     </div>
 </div>
 </body>
