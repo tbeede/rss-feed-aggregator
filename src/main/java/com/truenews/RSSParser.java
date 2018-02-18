@@ -11,9 +11,9 @@ import java.net.URL;
 
 public class RSSParser {
     public static String readRssFeed(String feedUrl) throws IOException, FeedException {
-        final URL feedSource = new URL(feedUrl);
-        final SyndFeedInput input = new SyndFeedInput();
-        final SyndFeed feed = input.build(new XmlReader(feedSource));
+        URL feedSource = new URL(feedUrl);
+        SyndFeedInput input = new SyndFeedInput();
+        SyndFeed feed = input.build(new XmlReader(feedSource));
         String parsedFeed = "";
         for(Object o: feed.getEntries()) {
             SyndEntry entry = (SyndEntry) o;
