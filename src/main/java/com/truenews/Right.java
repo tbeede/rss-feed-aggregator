@@ -1,18 +1,12 @@
 package com.truenews;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Right {
     private String fox = "http://feeds.foxnews.com/foxnews/politics";
-    private String zero = "http://feeds.feedburner.com/zerohedge/feed";
-
-    private final ArrayList<String> rightList = new ArrayList<>();
-
-    public ArrayList<String> getRightList() {
-        rightList.add(getFox());
-        rightList.add(getZero());
-        return rightList;
-    }
+    private String blaze = "https://www.theblaze.com/rss";
+    private String nr = "https://www.nationalreview.com/rss.xml";
 
     public String getFox() {
         return fox;
@@ -22,11 +16,20 @@ public class Right {
         this.fox = fox;
     }
 
-    public String getZero() {
-        return zero;
+    public String getBlaze() {
+        return blaze;
     }
 
-    public void setZero(String zero) {
-        this.zero = zero;
+    public void setBlaze(String blaze) {
+        this.blaze = blaze;
     }
+
+    public String getNR() {
+        return nr;
+    }
+
+    public void setNR(String nr) {
+        this.nr = nr;
+    }
+
 }
