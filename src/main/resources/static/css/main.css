@@ -1,19 +1,13 @@
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Helvetica, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-div {
-    box-shadow: 0 0 1px black inset;
-}
-
-#contentBox {
+.contentBox {
     margin: 0 auto;
-    width: 50%;
-}
-
-#contentBox .column {
-    float: left;
-    margin: 0;
-    width: 50%;
+    width: 80%;
 }
